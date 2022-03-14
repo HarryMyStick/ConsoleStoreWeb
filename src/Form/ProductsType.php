@@ -17,7 +17,16 @@ class ProductsType extends AbstractType
             ->add('Price')
             ->add('Quantity')
             ->add('Status')
-        ;
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => '...',
+                'download_label' => '...',
+                'download_uri' => true,
+                'image_uri' => true,
+                'imagine_pattern' => 'product_photo_320x240',
+                'asset_helper' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
