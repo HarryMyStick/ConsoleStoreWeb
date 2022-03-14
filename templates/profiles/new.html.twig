@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Profiles{% endblock %}
+
+{% block body %}
+    <h1>Create new Profiles</h1>
+
+    {{ include('profiles/_form.html.twig') }}
+
+    <a href="{{ path('app_profiles_index') }}">back to list</a>
+{% endblock %}

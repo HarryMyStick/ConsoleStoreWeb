@@ -16,6 +16,7 @@ class ProductsType extends AbstractType
             ->add('ProductName')
             ->add('Description')
             ->add('Price')
+            ->add('Supplier')
             ->add('Quantity')
             ->add('Status')
             ->add('imageFile', VichImageType::class, [

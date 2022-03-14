@@ -49,6 +49,11 @@ class Products
      * @ORM\Column(type="integer")
      */
     private $Price;
+    /**
+     * @ORM\ManyToOne(targetEntity=Suppliers::class, inversedBy="Products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Supplier;
 
     /**
      * @ORM\Column(type="integer")
@@ -106,7 +111,7 @@ class Products
                 $this->updatedAt =new \DateTime('now');
             }
     }
-    
+
     public function getImageFile()
     {
         return $this->imageFile;
@@ -128,6 +133,17 @@ class Products
     public function setPrice(int $Price): self
     {
         $this->Price = $Price;
+
+        return $this;
+    }
+    public function getSupplier(): ?SupplierName
+    {
+        return $this->Supplier;
+    }
+
+    public function setSupplier(?SupplierName $Supplier): self
+    {
+        $this->Supplier = $Supplier;
 
         return $this;
     }

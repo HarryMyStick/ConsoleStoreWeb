@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Suppliers{% endblock %}
+
+{% block body %}
+    <h1>Create new Suppliers</h1>
+
+    {{ include('suppliers/_form.html.twig') }}
+
+    <a href="{{ path('app_suppliers_index') }}">back to list</a>
+{% endblock %}
