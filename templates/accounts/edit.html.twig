@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Accounts{% endblock %}
+
+{% block body %}
+    <h1>Edit Accounts</h1>
+
+    {{ include('accounts/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_accounts_index') }}">back to list</a>
+
+    {{ include('accounts/_delete_form.html.twig') }}
+{% endblock %}

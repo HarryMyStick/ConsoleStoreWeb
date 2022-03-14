@@ -35,9 +35,15 @@ class Products
     private $Description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * ORM\Column(type:"string", length:255)
      */
-    private $Images;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="integer")
@@ -93,16 +99,25 @@ class Products
         return $this;
     }
 
-    public function getImages(): ?string
+    public function setImageFile(File $image = null)
     {
-        return $this->Images;
+        $this->imageFile = $image;
+            if($image){
+                $this->updatedAt =new \DateTime('now');
+            }
     }
-
-    public function setImages(string $Images): self
+    
+    public function getImageFile()
     {
-        $this->Images = $Images;
-
-        return $this;
+        return $this->imageFile;
+    }
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+    public function getImage()
+    {
+        return $this->image;
     }
 
     public function getPrice(): ?int
