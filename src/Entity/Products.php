@@ -49,6 +49,7 @@ class Products
      * @ORM\Column(type="integer")
      */
     private $Price;
+   
     /**
      * @ORM\ManyToOne(targetEntity=Suppliers::class, inversedBy="Products")
      * @ORM\JoinColumn(nullable=false)

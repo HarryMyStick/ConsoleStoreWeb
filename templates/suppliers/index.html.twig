@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>SupplierName</th>
+                <th>SupplierNation</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,6 +18,8 @@
         {% for supplier in suppliers %}
             <tr>
                 <td>{{ supplier.id }}</td>
+                <td>{{ supplier.SupplierName }}</td>
+                <td>{{ supplier.SupplierNation }}</td>
                 <td>
                     <a href="{{ path('app_suppliers_show', {'id': supplier.id}) }}">show</a>
                     <a href="{{ path('app_suppliers_edit', {'id': supplier.id}) }}">edit</a>
@@ -23,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

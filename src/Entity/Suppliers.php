@@ -60,6 +60,9 @@ class Suppliers
         return $this;
     }
 
+    /**
+     * @return Collection<string, Products>
+     */
     public function addSupplier(Supplier $Supplier): self
     {
         if (!$this->Suppliers->contains($Supplier)) {
