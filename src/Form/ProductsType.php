@@ -20,7 +20,7 @@ class ProductsType extends AbstractType
             ->add('Quantity')
             ->add('Status')
             ->add('imageFile', VichImageType::class, [
-                'required' => false,
+                'required' => true,
                 'allow_delete' => true,
                 'delete_label' => '...',
                 'download_label' => '...',

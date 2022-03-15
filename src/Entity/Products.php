@@ -35,17 +35,6 @@ class Products
     private $Description;
 
     /**
-     * ORM\Column(type:"string", length:255)
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $Price;
@@ -70,6 +59,19 @@ class Products
      * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="ID_Product", orphanRemoval=true)
      */
     private $orderdetails;
+    
+    /**
+     * ORM\Column(type:"string", length:255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
 
     public function __construct()
     {
@@ -109,10 +111,9 @@ class Products
     {
         $this->imageFile = $image;
             if($image){
-                $this->updatedAt =new \DateTime('now');
+                $this->updatedAt = new \DateTime('now');
             }
     }
-
     public function getImageFile()
     {
         return $this->imageFile;
