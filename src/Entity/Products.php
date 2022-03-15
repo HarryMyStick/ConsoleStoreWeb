@@ -61,7 +61,7 @@ class Products
     private $orderdetails;
     
     /**
-     * ORM\Column(type:"string", length:255)
+     * @ORM\Column(type="string", length=255)
      * @var string
      */
     private $image;
