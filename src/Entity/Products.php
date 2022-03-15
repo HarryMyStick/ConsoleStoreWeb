@@ -49,11 +49,11 @@ class Products
      * @ORM\Column(type="integer")
      */
     private $Price;
-   
-    /**
-     * @ORM\ManyToOne(targetEntity=Suppliers::class, inversedBy="Products")
-     * @ORM\JoinColumn(nullable=false)
-     */
+
+   /**
+    *  @ORM\ManyToOne(targetEntity=Suppliers::class, inversedBy="products")
+    *  @ORM\JoinColumn(nullable=false)
+    */
     private $Supplier;
 
     /**
@@ -137,12 +137,12 @@ class Products
 
         return $this;
     }
-    public function getSupplier(): ?SupplierName
+    public function getSupplier(): ?Suppliers
     {
         return $this->Supplier;
     }
 
-    public function setSupplier(?SupplierName $Supplier): self
+    public function setSupplier(?Suppliers $Supplier): self
     {
         $this->Supplier = $Supplier;
 

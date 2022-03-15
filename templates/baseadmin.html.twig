@@ -12,8 +12,29 @@
   <title> Console Web | Admin Panel</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" crossorigin="anonymous">
+  {% block javascripts %}
+    
+
+      <!-- Bootstrap core JavaScript-->
+  <script src="{{'vendor/jquery/jquery.min.js' }}"></script>
+  <script src="{{'vendor/bootstrap/js/bootstrap.bundle.min.js' }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{{asset('vendor/chart.js/Chart.min.js') }}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{ asset('js/demo/chart-area-demo.js' )}}"></script>
+  <script src="{{asset('js/demo/chart-pie-demo.js') }}"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    {% endblock %}
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" crossorigin="anonymous">
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
@@ -41,9 +62,9 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active">
-  <a class="nav-link" href="index.php">
+  <a class="nav-link" href="#">
     <i class="fas fa-fw fa-tachometer-alt"></i>
-    <span>Dashboard</span></a>
+    <span>Homepage</span></a>
 </li>
 
 <!-- Divider -->
@@ -63,8 +84,8 @@
   <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Custom Products:</h6>
-      <a class="collapse-item" href="buttons.html">Components</a>
-      <a class="collapse-item" href="cards.html">Suppliers</a>
+      <a class="collapse-item" href="#">Components</a>
+      <a class="collapse-item" href="#">Suppliers</a>
     </div>
   </div>
 </li>
@@ -79,7 +100,7 @@
   <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
     <div class="bg-white py-2 collapse-inner rounded">
       <h6 class="collapse-header">Custom Utilities:</h6>
-      <a class="collapse-item" href="utilities-color.html">Orders details</a>
+      <a class="collapse-item" href="#">Orders details</a>
     </div>
   </div>
 </li>
@@ -213,8 +234,6 @@
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-        class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
   <!-- Content Row -->
@@ -223,30 +242,12 @@
   </div>
 
   <!-- Content Row -->
-  
-
-      <!-- Bootstrap core JavaScript-->
-  <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-
-  <!-- Page level plugins -->
-  <script src="{{asset('vendor/chart.js/Chart.min.js')}}"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-  <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; HTT Website 2022</span>
           </div>
         </div>
       </footer>
