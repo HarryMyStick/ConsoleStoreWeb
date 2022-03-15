@@ -73,7 +73,7 @@ class Suppliers
     }
     
     /**
-     * @return Collection<string, Products>
+     * @return Collection<int, Products>
      */
     public function getProducts(): Collection
     {
