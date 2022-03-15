@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/products')]
 class ProductsController extends AbstractController
 {
-    #[Route('/', name: 'products_index', methods: ['GET'])]
+    #[Route('/', name: 'app_products_index', methods: ['GET'])]
     public function index(ProductsRepository $productsRepository): Response
     {
         return $this->render('products/index.html.twig', [
