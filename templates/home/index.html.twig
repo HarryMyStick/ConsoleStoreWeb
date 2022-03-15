@@ -9,13 +9,13 @@
             {% for product in products %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}" class="card img-top">
+                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.ProductName }}" class="card img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
+                            <h5 class="card-title">{{ product.ProductName }}</h5>
+                            <p class="card-text">{{ product.Description }}</p>
                             <div class="d-flex justify-content-between align-item-center">
                                 <a href="{{path('product.detail', {id: product.id})}}" class="btn btn-dark">View details</a>
-                                <span class="h5 mt-auto">{{ product.price}}$</span>
+                                <span class="h5 mt-auto">{{ product.Price}}$</span>
                             </div>
                         </div>
                     </div>

@@ -6,22 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductsRepository;
+use App\Entity\Products;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'homepage')]
+    #[Route('/home', name: 'home')]
     public function index(ProductsRepository $productsRepository): Response
     {
-        return $this->render('products/index.html.twig', [
+        return $this->render('home/index.html.twig', [
             'products' => $productsRepository->findAll(),
         ]);
     }
-    
-    #[Route("/product/{id}/details", name:"product.detail")]
-    public function detail(ProductController $product):Response
+
+    #[Route("/products/{id}/details", name:"product.detail")]
+    public function detail(ProductsController $products):Response
     {
-        return $this->render('product/detail.html.twig',[
-            'product' => $product,
+        return $this->render('products/detail.html.twig',[
+            'product' => $products,
         ]);
     }
 }

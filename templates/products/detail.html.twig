@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ product.name }}
+    {{ product.ProductName }}
 {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row mt-3 mb-4">
             <div class="col-md-4">
-                <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}" class="img-fluid">
+                <img src="{{ vich_uploader_asset(products, 'imageFile') }}" alt="{{ product.ProductName }}" class="img-fluid">
             </div>
             <div class="col-md-8">
-                <h1 class="mt-4 mt-md-0">{{ product.name }}</h1>
-                <h2>{{ product.price }}
+                <h1 class="mt-4 mt-md-0">{{ product.ProductName }}</h1>
+                <h2>{{ product.Price }}
                     €</h2>
                 <hr>
                 <b>Description:
                 </b>
-                {{ product.description }}
+                {{ product.Description }}
                 <form class="mt-4 p-4 bg-light" method="post">
                     <div class="form-group">
                         <label for="quantity">Quantity</label>
