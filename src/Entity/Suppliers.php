@@ -103,7 +103,7 @@ class Suppliers
     }
     public function __toString()
     {
-        return $this->products;
+        return $this->SupplierName;
     }
 
 }
