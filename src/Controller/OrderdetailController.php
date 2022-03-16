@@ -13,7 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/orderdetail')]
 class OrderdetailController extends AbstractController
 {
-    #[Route('/', name: 'app_orderdetail_index', methods: ['GET'])]
+    
+    /**
+     * @Route("/", name="app_orderdetail_index", methods={"GET"})
+     */
     public function index(OrderdetailRepository $orderdetailRepository): Response
     {
         return $this->render('orderdetail/index.html.twig', [
@@ -21,7 +24,10 @@ class OrderdetailController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_orderdetail_new', methods: ['GET', 'POST'])]
+    
+    /**
+     * @Route("/new", name="app_orderdetail_new", methods={"GET", "POST"})
+     */
     public function new(Request $request, OrderdetailRepository $orderdetailRepository): Response
     {
         $orderdetail = new Orderdetail();
@@ -39,7 +45,10 @@ class OrderdetailController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_orderdetail_show', methods: ['GET'])]
+    
+    /**
+     * @Route("/{id}", name="app_orderdetail_show", methods={"GET"})
+     */
     public function show(Orderdetail $orderdetail): Response
     {
         return $this->render('orderdetail/show.html.twig', [
@@ -47,7 +56,10 @@ class OrderdetailController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_orderdetail_edit', methods: ['GET', 'POST'])]
+    
+    /**
+     * @Route("/{id}/edit", name="app_orderdetail_edit", methods={"GET", "POST"})
+     */
     public function edit(Request $request, Orderdetail $orderdetail, OrderdetailRepository $orderdetailRepository): Response
     {
         $form = $this->createForm(OrderdetailType::class, $orderdetail);
@@ -64,7 +76,10 @@ class OrderdetailController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_orderdetail_delete', methods: ['POST'])]
+    
+    /**
+     * @Route("/{id}", name="app_orderdetail_delete", methods={"POST"})
+     */
     public function delete(Request $request, Orderdetail $orderdetail, OrderdetailRepository $orderdetailRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$orderdetail->getId(), $request->request->get('_token'))) {

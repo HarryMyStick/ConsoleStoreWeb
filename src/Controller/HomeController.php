@@ -10,7 +10,10 @@ use App\Entity\Products;
 
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'home')]
+    
+    /**
+     * @Route("/home", name="home")
+     */
     public function index(ProductsRepository $productsRepository): Response
     {
         return $this->render('home/index.html.twig', [
