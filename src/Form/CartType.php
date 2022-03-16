@@ -6,6 +6,8 @@ use App\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class CartType extends AbstractType
 {
@@ -18,7 +20,7 @@ class CartType extends AbstractType
             ->add('Total')
             ->add('Status')
             ->add('ID_Account')
-            ->add('items', CollectionType::class, [
+            ->add('orderdetails', CollectionType::class, [
                 'entry_type' => CartItemType::class
             ])
             ->add('save', SubmitType::class)

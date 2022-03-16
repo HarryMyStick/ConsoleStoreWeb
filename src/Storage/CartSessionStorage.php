@@ -44,7 +44,7 @@ class CartSessionStorage
     {
         return $this->cartRepository->findOneBy([
             'id' => $this->getCartId(),
-            'status' => Orders::STATUS_CART,
+            'Status' => Orders::STATUS_CART,
         ]);
     }
 

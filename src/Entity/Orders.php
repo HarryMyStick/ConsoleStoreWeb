@@ -25,7 +25,7 @@ class Orders
     private $Date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="date")
      */
     private $Delivery;
 
@@ -85,12 +85,12 @@ class Orders
         return $this;
     }
 
-    public function getDelivery(): ?string
+    public function getDelivery(): ?\DateTimeInterface
     {
         return $this->Delivery;
     }
 
-    public function setDelivery(string $Delivery): self
+    public function setDelivery(\DateTimeInterface $Delivery): self
     {
         $this->Delivery = $Delivery;
 

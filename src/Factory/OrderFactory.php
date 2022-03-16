@@ -2,7 +2,7 @@
 
 namespace App\Factory;
 
-use App\Entity\Order;
+use App\Entity\Orders;
 use App\Entity\Orderdetail;
 use App\Entity\Products;
 
@@ -14,13 +14,13 @@ class OrderFactory
     /**
      * Creates an order.
      */
-    public function create(): Order
+    public function create(): Orders
     {
-        $order = new Order();
+        $order = new Orders();
         $order
-            ->setStatus(Order::STATUS_CART)
-            ->setCreatedAt(new \DateTime())
-            ->setUpdatedAt(new \DateTime());
+            ->setStatus(Orders::STATUS_CART)
+            ->setDate(new \DateTime())
+            ->setDelivery(new \DateTime());
 
         return $order;
     }

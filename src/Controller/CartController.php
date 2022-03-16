@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AddToCartType;
 use App\Manager\CartManager;
+use App\Form\CartType;
 
 /**
  * Class CartController
