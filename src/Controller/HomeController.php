@@ -18,11 +18,5 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route("/products/{id}/details", name:"product.detail")]
-    public function detail(ProductsController $products):Response
-    {
-        return $this->render('products/detail.html.twig',[
-            'product' => $products,
-        ]);
-    }
+
 }

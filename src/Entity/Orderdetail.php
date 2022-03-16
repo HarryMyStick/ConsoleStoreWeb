@@ -97,9 +97,13 @@ class Orderdetail
         return $this;
     }
 
-    public function getTotal(): ?int
+      /**
+     * Calculates the item total.
+     * @return float|int
+     */
+    public function getTotal(): float
     {
-        return $this->Total;
+        return $this->getIDProduct()->getPrice() * $this->getQuantity();
     }
 
     public function setTotal(int $Total): self
@@ -108,4 +112,16 @@ class Orderdetail
 
         return $this;
     }
+    /**
+     * Tests if the given item given corresponds to the same order item.
+     * @param OrderItem $item
+     * @return bool
+     */
+    public function equals(OrderItem $item): bool
+    {
+        return $this->getIDProduct()->getId() === $item->getIDProduct()->getId();
+    }
+
+
 }
+

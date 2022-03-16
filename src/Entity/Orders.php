@@ -42,7 +42,15 @@ class Orders
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Status;
+    private $Status = self::STATUS_CART;
+    
+    /**
+     * An order that is in progress, not placed yet.
+     *
+     * @var string
+     */
+    const STATUS_CART = 'cart';
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Accounts::class, inversedBy="orders")
@@ -166,4 +174,32 @@ class Orders
 
         return $this;
     }
+    
+    public function addItem(Orderdetail $item): self
+    {
+        foreach ($this->getOrderdetails() as $existingItem) {
+            // The item already exists, update the quantity
+            if ($existingItem->equals($item)) {
+                $existingItem->setQuantity(
+                    $existingItem->getQuantity() + $item->getQuantity()
+                );
+                return $this;
+            }
+        }
+
+        $this->items[] = $item;
+        $item->setIDOrder($this);
+
+        return $this;
+    }
+
+    public function removeItem(Orderdetail $item): self
+    {
+        foreach ($this->getOrderdetails() as $item) {
+            $this->removeItem($item);
+        }
+
+        return $this;
+    }
+
 }

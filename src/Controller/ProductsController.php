@@ -38,6 +38,32 @@ class ProductsController extends AbstractController
             'form' => $form,
         ]);
     }
+    /**
+     * @Route("/product/{id}/detail", name="product.detail")
+     */
+    public function detail(Products $product, Request $request, CartManager $cartManager): Response
+    {
+        $form = $this->createForm(AddToCartType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $item = $form->getData();
+            $item->setProduct($product);
+
+            $cart = $cartManager->getCurrentCart();
+            $cart
+                ->addItem($item)
+                ->setUpdatedAt(new \DateTime());
+
+            $cartManager->save($cart);
+
+            return $this->redirectToRoute('products.detail', ['id' => $product->getId()]);
+        }
+        return $this->render('products/detail.html.twig', [
+            'product' => $product,
+            'form' => $form->createView()
+        ]);
+    }
+
 
     #[Route('/{id}', name: 'app_products_show', methods: ['GET'])]
     public function show(Products $product): Response
