@@ -9,7 +9,7 @@
             {% for product in products %}
                 <div class="col-md-4">
                     <div class="card mb-4 ">
-                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.ProductName }}" class="card img-top center" width="320px" height="240px">
+                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.ProductName }}" class="card img-top center-img" width="320px" height="240px">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.ProductName }}</h5>
                             <p class="card-text">{{ product.Description }}</p>

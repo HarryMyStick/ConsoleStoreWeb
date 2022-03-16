@@ -1,6 +1,17 @@
-.center {
+.center-img {
+    display: block;
     margin: auto;
     width: 80%;
-    border: 1px solid;
+    border: 3px solid;
     padding: 1px;
   }
+.nav-title-about {
+  text-align: left;
+  size: 12px;
+  margin-right: auto;
+}
+
+.text-center {
+  margin: auto;
+  padding: auto;
+}
