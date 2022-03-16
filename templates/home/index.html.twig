@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Welcome to HTT Shop!{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -9,13 +9,13 @@
             {% for product in products %}
                 <div class="col-md-4">
                     <div class="card mb-4 ">
-                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.ProductName }}" class="card img-top center" width="250px" height="250px">
+                        <img src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.ProductName }}" class="card img-top center" width="320px" height="240px">
                         <div class="card-body">
                             <h5 class="card-title">{{ product.ProductName }}</h5>
                             <p class="card-text">{{ product.Description }}</p>
                             <div class="d-flex justify-content-between align-item-center">
-                                <a href="{{path('product.detail', {id: product.id})}}" class="btn btn-dark">View details</a>
-                                <span class="h5 mt-auto">{{ product.Price}}$</span>
+                                <a href="{{path('product.detail', {id: product.id})}}" class="btn btn-primary">View details</a>
+                                <span class="h5 mt-auto">{{ product.Price}} €</span>
                             </div>
                         </div>
                     </div>
