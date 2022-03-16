@@ -31,8 +31,9 @@
                 <td>{{ product.Quantity }}</td>
                 <td>{{ product.Status }}</td>
                 <td>
-                    <a href="{{ path('app_products_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_products_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('app_products_show', {'id': product.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('app_products_edit', {'id': product.id}) }}" class="btn btn-warning">edit</a>
+                    <a href="{{ path('app_products_delete', {'id': product.id}) }}" class="btn btn-danger">delete</a>
                 </td>
             </tr>
         {% else %}

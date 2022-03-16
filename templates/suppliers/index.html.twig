@@ -21,8 +21,9 @@
                 <td>{{ supplier.SupplierName }}</td>
                 <td>{{ supplier.SupplierNation }}</td>
                 <td>
-                    <a href="{{ path('app_suppliers_show', {'id': supplier.id}) }}">show</a>
-                    <a href="{{ path('app_suppliers_edit', {'id': supplier.id}) }}">edit</a>
+                    <a href="{{ path('app_suppliers_show', {'id': supplier.id}) }}" class="btn btn-success">show</a>
+                    <a href="{{ path('app_suppliers_edit', {'id': supplier.id}) }}" class="btn btn-warning">edit</a>
+                    <a href="{{ path('app_suppliers_delete', {'id': supplier.id}) }}" class="btn btn-danger">delete</a>
                 </td>
             </tr>
         {% else %}
