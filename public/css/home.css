@@ -5,13 +5,24 @@
     border: 3px solid;
     padding: 1px;
   }
-.nav-title-about {
-  text-align: left;
-  size: 12px;
-  margin-right: auto;
-}
 
 .text-center {
   margin: auto;
   padding: auto;
+}
+
+.navbar-login {
+  text-align: right;
+  color: white;
+  right: 2px;
+  font-size: .8rem,bold;
+  margin-right: auto;
+}
+
+.navbar-about {
+  text-align: right;
+  color: white;
+  right: 2px;
+  font-size: .8rem,bold;
+  margin-right: auto;
 }
