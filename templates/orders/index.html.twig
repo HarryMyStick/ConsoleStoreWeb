@@ -27,8 +27,7 @@
                 <td>{{ order.Total }}</td>
                 <td>{{ order.Status }}</td>
                 <td>
-                    <a href="{{ path('app_orders_show', {'id': order.id}) }}">show</a>
-                    <a href="{{ path('app_orders_edit', {'id': order.id}) }}">edit</a>
+                    <a href=""{{ path('app_orderdetail_show', {'id': orderdetail.id}) }}"">order detail</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +38,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_orders_new') }}">Create new</a>
 {% endblock %}
