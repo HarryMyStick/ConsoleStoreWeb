@@ -32,7 +32,7 @@
 									<div class="mb-3">
 
 										You are logged in as
-										{{ app.user.username }},
+										{{ app.user.Username }},
 
 										<a href="{{ path('app_logout') }}">Logout</a>
 
@@ -44,11 +44,11 @@
 
 								<div class="form-group">
 
-									<label for="email" class="col-md-4 control-label">E-Mail Address</label>
+									<label for="username" class="col-md-4 control-label">Username</label>
 
 									<div class="col-md-12">
 
-										<input id="inputEmail" type="email" class="form-control" name="email" value="{{ last_username }}" required autofocus/>
+										<input type="text" class="form-control" name="username" value="{{ last_username }}" required autofocus/>
 
 									</div>
 
