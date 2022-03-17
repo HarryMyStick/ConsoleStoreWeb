@@ -6,6 +6,8 @@ use App\Entity\Accounts;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class AccountsType extends AbstractType
 {
@@ -13,9 +15,15 @@ class AccountsType extends AbstractType
     {
         $builder
             ->add('Username')
-            ->add('Password')
-            ->add('AccountType')
-            ->add('profiles')
+            ->add('Password', RepeatedType::class, [
+
+                'type' => PasswordType::class,
+
+                'first_options' => ['label' => 'Password'],
+
+                'second_options' => ['label' => 'Confirm Password']
+
+            ])
         ;
     }
 
