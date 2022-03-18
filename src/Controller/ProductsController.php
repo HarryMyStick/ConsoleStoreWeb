@@ -58,7 +58,7 @@ class ProductsController extends AbstractController
 
             $cartManager->save($cart);
 
-            return $this->redirectToRoute('products.detail', ['id' => $product->getId()]);
+            return $this->redirectToRoute('product.detail', ['id' => $product->getId()]);
         }
         return $this->render('products/detail.html.twig', [
             'product' => $product,

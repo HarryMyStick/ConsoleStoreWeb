@@ -34,17 +34,6 @@ class Accounts
      */
     private $AccountType;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="ID_Account", orphanRemoval=true)
-     */
-    private $orders;
-
-    public function __construct()
-    {
-        $this->orders = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -85,37 +74,7 @@ class Accounts
 
         return $this;
     }
-    
-    /**
-     * @return Collection<int, Orders>
-     */
-    public function getOrders(): Collection
-    {
-        return $this->orders;
-    }
-
-    public function addOrder(Orders $order): self
-    {
-        if (!$this->orders->contains($order)) {
-            $this->orders[] = $order;
-            $order->setIDAccount($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrder(Orders $order): self
-    {
-        if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getIDAccount() === $this) {
-                $order->setIDAccount(null);
-            }
-        }
-
-        return $this;
-    }
-    
+     
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.

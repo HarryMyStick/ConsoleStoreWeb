@@ -30,11 +30,6 @@ class Orders
     private $Delivery;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $Total;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Status = self::STATUS_CART;
@@ -45,22 +40,15 @@ class Orders
      * @var string
      */
     const STATUS_CART = 'cart';
-
-
+ 
     /**
-     * @ORM\ManyToOne(targetEntity=Accounts::class, inversedBy="orders")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="orderRef", cascade={"persist", "remove"}, orphanRemoval=true)
      */
-    private $ID_Account;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="ID_Order", orphanRemoval=true)
-     */
-    private $orderdetails;
+    private $items;
 
     public function __construct()
     {
-        $this->orderdetails = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -91,17 +79,6 @@ class Orders
 
         return $this;
     }
-    public function getTotal(): ?int
-    {
-        return $this->Total;
-    }
-
-    public function setTotal(int $Total): self
-    {
-        $this->Total = $Total;
-
-        return $this;
-    }
 
     public function getStatus(): ?string
     {
@@ -115,30 +92,11 @@ class Orders
         return $this;
     }
 
-    public function getIDAccount(): ?Accounts
-    {
-        return $this->ID_Account;
-    }
-
-    public function setIDAccount(?Accounts $ID_Account): self
-    {
-        $this->ID_Account = $ID_Account;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Orderdetail>
-     */
-    public function getOrderdetails(): Collection
-    {
-        return $this->orderdetails;
-    }
 
     public function addOrderdetail(Orderdetail $orderdetail): self
     {
-        if (!$this->orderdetails->contains($orderdetail)) {
-            $this->orderdetails[] = $orderdetail;
+        if (!$this->items->contains($orderdetail)) {
+            $this->items[] = $orderdetail;
             $orderdetail->setIDOrder($this);
         }
 
@@ -147,7 +105,7 @@ class Orders
 
     public function removeOrderdetail(Orderdetail $orderdetail): self
     {
-        if ($this->orderdetails->removeElement($orderdetail)) {
+        if ($this->item->removeElement($orderdetail)) {
             // set the owning side to null (unless already changed)
             if ($orderdetail->getIDOrder() === $this) {
                 $orderdetail->setIDOrder(null);
@@ -156,10 +114,18 @@ class Orders
 
         return $this;
     }
-    
+
+    /**
+     * @return Collection<int, Orderdetail>
+     */
+    public function getItems(): Collection
+    {
+        return $this->items;
+    }
+
     public function addItem(Orderdetail $item): self
     {
-        foreach ($this->getOrderdetails() as $existingItem) {
+        foreach ($this->getItems() as $existingItem) {
             // The item already exists, update the quantity
             if ($existingItem->equals($item)) {
                 $existingItem->setQuantity(
@@ -170,18 +136,34 @@ class Orders
         }
 
         $this->items[] = $item;
-        $item->setIDOrder($this);
+        $item->setOrderRef($this);
 
         return $this;
     }
 
     public function removeItem(Orderdetail $item): self
     {
-        foreach ($this->getOrderdetails() as $item) {
+        foreach ($this->getItems() as $item) {
             $this->removeItem($item);
         }
 
         return $this;
     }
 
+        /**
+     * Calculates the order total.
+     * @return float
+     */
+    public function getTotal(): int
+    {
+        $Total = 0;
+
+        foreach ($this->getitem() as $item) {
+            $Total += $item->getTotal();
+        }
+
+        return $Total;
+    }
+    
+    
 }

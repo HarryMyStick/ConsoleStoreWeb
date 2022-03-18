@@ -19,10 +19,10 @@ class Orderdetail
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="orderdetails")
+     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="items")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $ID_Order;
+    private $orderRef;
 
     /**
      * @ORM\ManyToOne(targetEntity=Products::class, inversedBy="orderdetails")
@@ -52,14 +52,14 @@ class Orderdetail
         return $this->id;
     }
 
-    public function getIDOrder(): ?Orders
+    public function getOrderRef(): ?Orders
     {
-        return $this->ID_Order;
+        return $this->orderRef;
     }
 
-    public function setIDOrder(?Orders $ID_Order): self
+    public function setOrderRef(?Orders $orderRef): self
     {
-        $this->ID_Order = $ID_Order;
+        $this->orderRef = $orderRef;
 
         return $this;
     }
@@ -99,6 +99,7 @@ class Orderdetail
 
         return $this;
     }
+    
 
       /**
      * Calculates the item total.
@@ -117,10 +118,10 @@ class Orderdetail
     }
     /**
      * Tests if the given item given corresponds to the same order item.
-     * @param OrderItem $item
+     * @param Orderdetail $item
      * @return bool
      */
-    public function equals(OrderItem $item): bool
+    public function equals(Orderdetail $item): bool
     {
         return $this->getIDProduct()->getId() === $item->getIDProduct()->getId();
     }

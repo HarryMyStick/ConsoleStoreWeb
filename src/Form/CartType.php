@@ -16,10 +16,8 @@ class CartType extends AbstractType
         $builder
             ->add('Date')
             ->add('Delivery')
-            ->add('Address')
             ->add('Total')
             ->add('Status')
-            ->add('ID_Account')
             ->add('orderdetails', CollectionType::class, [
                 'entry_type' => CartItemType::class
             ])
