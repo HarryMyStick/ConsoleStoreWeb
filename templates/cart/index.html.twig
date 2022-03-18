@@ -6,7 +6,7 @@
 {% block body %}
 	<div class="container mt-4">
 		<h1>Your Cart</h1>
-		{% if cart.orderdetails.count > 0 %}
+		{% if cart.items.count > 0 %}
 			<div
 				class="row mt-4">
 				<!-- List of items -->
@@ -21,14 +21,14 @@
 							</div>
 						</div>
 						<ul class="list-group list-group-flush">
-							{% for product in form.products %}
+							{% for item in form.items %}
 								<li class="list-group-item d-flex">
 									<div class="flex-fill mr-2">
 										<img src="{{ vich_uploader_asset(item.vars.data.product, 'imageFile') }}" width="64" alt="Product image">
 									</div>
 									<div class="flex-fill mr-2">
-										<h5 class="mt-0 mb-0">{{ item.vars.data.product.name }}</h5>
-										<small>{{ item.vars.data.product.description[:50] }}...</small>
+										<h5 class="mt-0 mb-0">{{ item.vars.data.product.ProductName }}</h5>
+										<small>{{ item.vars.data.product.Description[:50] }}...</small>
 										<div class="form-inline mt-2">
 											<div class="form-group mb-0 mr-2">
 												{{ form_widget(item.quantity, {
@@ -44,7 +44,7 @@
 										</div>
 									</div>
 									<div class="flex-fill mr-2 text-right">
-										<b>{{ item.vars.data.product.price }}
+										<b>{{ item.vars.data.product.Price }}
 											€</b>
 									</div>
 								</li>
@@ -63,7 +63,7 @@
 									<b>Total</b>
 								</div>
 								<span>
-									<b>{{ cart.total }}
+									<b>{{ cart.Total }}
 										€</b>
 								</span>
 							</li>

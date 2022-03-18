@@ -28,12 +28,7 @@ class Orderdetail
      * @ORM\ManyToOne(targetEntity=Products::class, inversedBy="orderdetails")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $ID_Product;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Price;
+    private $product;
 
     /**
      * @ORM\Column(type="integer")
@@ -42,10 +37,6 @@ class Orderdetail
      */
     private $Quantity;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Total;
 
     public function getId(): ?int
     {
@@ -64,26 +55,14 @@ class Orderdetail
         return $this;
     }
 
-    public function getIDProduct(): ?Products
+    public function getproduct(): ?Products
     {
-        return $this->ID_Product;
+        return $this->product;
     }
 
-    public function setIDProduct(?Products $ID_Product): self
+    public function setproduct(?Products $product): self
     {
-        $this->ID_Product = $ID_Product;
-
-        return $this;
-    }
-
-    public function getPrice(): ?int
-    {
-        return $this->Price;
-    }
-
-    public function setPrice(int $Price): self
-    {
-        $this->Price = $Price;
+        $this->product = $product;
 
         return $this;
     }
@@ -107,15 +86,9 @@ class Orderdetail
      */
     public function getTotal(): float
     {
-        return $this->getIDProduct()->getPrice() * $this->getQuantity();
+        return $this->getproduct()->getPrice() * $this->getQuantity();
     }
 
-    public function setTotal(int $Total): self
-    {
-        $this->Total = $Total;
-
-        return $this;
-    }
     /**
      * Tests if the given item given corresponds to the same order item.
      * @param Orderdetail $item
@@ -123,7 +96,7 @@ class Orderdetail
      */
     public function equals(Orderdetail $item): bool
     {
-        return $this->getIDProduct()->getId() === $item->getIDProduct()->getId();
+        return $this->getroduct()->getId() === $item->getIDProduct()->getId();
     }
 
 

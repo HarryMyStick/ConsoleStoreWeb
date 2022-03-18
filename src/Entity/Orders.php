@@ -149,21 +149,18 @@ class Orders
 
         return $this;
     }
-
-        /**
+    /**
      * Calculates the order total.
      * @return float
      */
-    public function getTotal(): int
+    public function getTotal(): float
     {
-        $Total = 0;
+        $total = 0;
 
-        foreach ($this->getitem() as $item) {
-            $Total += $item->getTotal();
+        foreach ($this->getItems() as $item) {
+            $total += $item->getTotal();
         }
 
-        return $Total;
+        return $total;
     }
-    
-    
 }
