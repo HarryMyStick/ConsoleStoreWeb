@@ -49,12 +49,12 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
-            $item->setProduct($product);
+            $item->setIDProduct($product);
 
             $cart = $cartManager->getCurrentCart();
             $cart
                 ->addItem($item)
-                ->setUpdatedAt(new \DateTime());
+                ->setDate(new \DateTime());
 
             $cartManager->save($cart);
 

@@ -30,11 +30,6 @@ class Orders
     private $Delivery;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Address;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $Total;
@@ -96,19 +91,6 @@ class Orders
 
         return $this;
     }
-
-    public function getAddress(): ?string
-    {
-        return $this->Address;
-    }
-
-    public function setAddress(string $Address): self
-    {
-        $this->Address = $Address;
-
-        return $this;
-    }
-
     public function getTotal(): ?int
     {
         return $this->Total;

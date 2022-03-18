@@ -34,10 +34,6 @@ class Accounts
      */
     private $AccountType;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Profiles::class, mappedBy="ID_Account", cascade={"persist", "remove"})
-     */
-    private $profiles;
 
     /**
      * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="ID_Account", orphanRemoval=true)
@@ -89,24 +85,7 @@ class Accounts
 
         return $this;
     }
-
-    public function getProfiles(): ?Profiles
-    {
-        return $this->profiles;
-    }
-
-    public function setProfiles(Profiles $profiles): self
-    {
-        // set the owning side of the relation if necessary
-        if ($profiles->getIDAccount() !== $this) {
-            $profiles->setIDAccount($this);
-        }
-
-        $this->profiles = $profiles;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection<int, Orders>
      */
