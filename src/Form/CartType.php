@@ -14,9 +14,6 @@ class CartType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('Date')
-            ->add('Delivery')
-            ->add('Status')
             ->add('items', CollectionType::class, [
                 'entry_type' => CartItemType::class
             ])

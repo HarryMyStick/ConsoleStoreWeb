@@ -96,7 +96,7 @@ class Orderdetail
      */
     public function equals(Orderdetail $item): bool
     {
-        return $this->getroduct()->getId() === $item->getIDProduct()->getId();
+        return $this->getproduct()->getId() === $item->getproduct()->getId();
     }
 
 

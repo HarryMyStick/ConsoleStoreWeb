@@ -49,7 +49,7 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
-            $item->setIDProduct($product);
+            $item->setproduct($product);
 
             $cart = $cartManager->getCurrentCart();
             $cart

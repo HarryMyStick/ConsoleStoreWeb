@@ -20,12 +20,12 @@ class Orders
     private $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $Date;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $Delivery;
 
@@ -68,7 +68,7 @@ class Orders
         return $this;
     }
 
-    public function getDelivery(): ?\DateTimeInterface
+    public function getDelivery(): \DateTimeInterface
     {
         return $this->Delivery;
     }
