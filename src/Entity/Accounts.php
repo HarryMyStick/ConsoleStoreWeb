@@ -6,11 +6,12 @@ use App\Repository\AccountsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=AccountsRepository::class)
  */
-class Accounts
+class Accounts implements UserInterface
 {
     /**
      * @ORM\Id
@@ -97,5 +98,17 @@ class Accounts
     public function __toString()
     {
         return $this->Username;
+    }
+    public function getRoles(): array {
+        $roles = $this->roles;
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): void {
+        $this->roles = $roles;
     }
 }
