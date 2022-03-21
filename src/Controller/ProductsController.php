@@ -11,8 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\AddToCartType;
 use App\Manager\CartManager;
-
-#[Route('/products')]
+/**
+ * @Route("/products")
+ */
 class ProductsController extends AbstractController
 {
     /**
