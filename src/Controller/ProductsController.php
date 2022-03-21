@@ -15,14 +15,18 @@ use App\Manager\CartManager;
 #[Route('/products')]
 class ProductsController extends AbstractController
 {
-    #[Route('/', name: 'app_products_index', methods: ['GET'])]
+    /**
+     * @Route("/", name="app_products_index", methods={"POST"})
+     */
     public function index(ProductsRepository $productsRepository): Response
     {
         return $this->render('products/index.html.twig', [
             'products' => $productsRepository->findAll(),
         ]);
     }
-
+    /**
+     * @Route("/new", name="app_products_new", methods={"GET", "POST"})
+     */
     #[Route('/new', name: 'app_products_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProductsRepository $productsRepository): Response
     {
@@ -67,15 +71,19 @@ class ProductsController extends AbstractController
     }
 
 
-    #[Route('/{id}', name: 'app_products_show', methods: ['GET'])]
+    /**
+     * @Route("/{id}", name="app_products_show", methods={"GET"})
+     */
     public function show(Products $product): Response
     {
         return $this->render('products/show.html.twig', [
             'product' => $product,
         ]);
     }
-
-    #[Route('/{id}/edit', name: 'app_products_edit', methods: ['GET', 'POST'])]
+    
+    /**
+     * @Route("/{id}/edit", name="app_products_edit", methods={"GET", "POST"})
+     */
     public function edit(Request $request, Products $product, ProductsRepository $productsRepository): Response
     {
         $form = $this->createForm(ProductsType::class, $product);
@@ -92,7 +100,9 @@ class ProductsController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_products_delete', methods: ['POST'])]
+    /**
+     * @Route("/{id}", name="app_products_delete", methods={"POST"})
+     */
     public function delete(Request $request, Products $product, ProductsRepository $productsRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {

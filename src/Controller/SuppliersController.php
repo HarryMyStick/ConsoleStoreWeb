@@ -10,10 +10,16 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/suppliers')]
+
+/**
+ * @Route("/suppliers")
+ */
 class SuppliersController extends AbstractController
 {
-    #[Route('/', name: 'app_suppliers_index', methods: ['GET'])]
+    
+    /**
+     * @Route("/", name="app_suppliers_index", methods={"GET"})
+     */
     public function index(SuppliersRepository $suppliersRepository): Response
     {
         return $this->render('suppliers/index.html.twig', [
@@ -21,7 +27,9 @@ class SuppliersController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_suppliers_new', methods: ['GET', 'POST'])]
+    /**
+     * @Route("/new", name="app_suppliers_new", methods={"GET", "POST"})
+     */
     public function new(Request $request, SuppliersRepository $suppliersRepository): Response
     {
         $supplier = new Suppliers();
@@ -38,8 +46,10 @@ class SuppliersController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    #[Route('/{id}', name: 'app_suppliers_show', methods: ['GET'])]
+    
+    /**
+     * @Route("/{id}", name="app_suppliers_show", methods={"GET"})
+     */
     public function show(Suppliers $supplier): Response
     {
         return $this->render('suppliers/show.html.twig', [
@@ -47,7 +57,9 @@ class SuppliersController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_suppliers_edit', methods: ['GET', 'POST'])]
+    /**
+     * @Route("/{id}/edit", name="app_suppliers_edit", methods={"GET", "POST"})
+     */
     public function edit(Request $request, Suppliers $supplier, SuppliersRepository $suppliersRepository): Response
     {
         $form = $this->createForm(SuppliersType::class, $supplier);
@@ -63,8 +75,10 @@ class SuppliersController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    #[Route('/{id}', name: 'app_suppliers_delete', methods: ['POST'])]
+    
+    /**
+     * @Route("/{id}", name="app_suppliers_delete", methods={"POST"})
+     */
     public function delete(Request $request, Suppliers $supplier, SuppliersRepository $suppliersRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$supplier->getId(), $request->request->get('_token'))) {
