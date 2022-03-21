@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Accounts;
+use App\Entity\User;
 
-use App\Form\AccountsType;
+use App\Form\UserType;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,11 +37,11 @@ class RegistrationController extends AbstractController
 
     {
 
-        $Username = new Accounts();
+        $username = new User();
 
 
 
-        $form = $this->createForm(AccountsType::class, $Username);
+        $form = $this->createForm(UserType::class, $username);
 
 
 
@@ -53,13 +53,13 @@ class RegistrationController extends AbstractController
 
             // Encode the new users password
 
-            $Username->setPassword($this->passwordEncoder->encodePassword($Username, $Username->getPassword()));
+            $username->setPassword($this->passwordEncoder->encodePassword($username, $username->getPassword()));
 
 
 
             // Set their role
 
-            $Username->setRoles(['ROLE_USER']);
+            $username->setRoles(['ROLE_USER']);
 
 
 
@@ -67,7 +67,7 @@ class RegistrationController extends AbstractController
 
             $em = $this->getDoctrine()->getManager();
 
-            $em->persist($Username);
+            $em->persist($username);
 
             $em->flush();
 
