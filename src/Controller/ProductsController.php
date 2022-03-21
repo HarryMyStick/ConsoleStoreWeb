@@ -17,7 +17,7 @@ use App\Manager\CartManager;
 class ProductsController extends AbstractController
 {
     /**
-     * @Route("/", name="app_products_index", methods={"POST"})
+     * @Route("/", name="app_products_index", methods={"GET", "POST"})
      */
     public function index(ProductsRepository $productsRepository): Response
     {
