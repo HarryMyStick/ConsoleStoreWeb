@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrdersRepository;
+use App\Factory\OrderFactory;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -141,13 +143,26 @@ class Orders
         return $this;
     }
 
-    public function removeItem(OrderItem $item): self
+    public function removeItem(Orderdetail $items): self
     {
-        if ($this->items->removeElement($item)) {
+        if ($this->items->removeElement($items)) {
             // set the owning side to null (unless already changed)
-            if ($item->getOrderRef() === $this) {
-                $item->setOrderRef(null);
+            if ($items->getOrderRef() === $this) {
+                $items->setOrderRef(null);
             }
+        }
+
+        return $this;
+    }
+    /**
+    * Removes all items from the order.
+    *
+    * @return $this
+    */
+    public function removeItems(): self
+    {
+        foreach ($this->getItems() as $item) {
+         $this->removeItem($item);
         }
 
         return $this;
