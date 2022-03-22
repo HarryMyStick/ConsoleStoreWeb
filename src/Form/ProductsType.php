@@ -26,7 +26,6 @@ class ProductsType extends AbstractType
                 'download_label' => '...',
                 'download_uri' => true,
                 'image_uri' => true,
-                'imagine_pattern' => 'product_photo_320x240',
                 'asset_helper' => true,
             ]);
     }

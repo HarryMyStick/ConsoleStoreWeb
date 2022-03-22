@@ -141,10 +141,13 @@ class Orders
         return $this;
     }
 
-    public function removeItem(Orderdetail $item): self
+    public function removeItem(OrderItem $item): self
     {
-        foreach ($this->getItems() as $item) {
-            $this->removeItem($item);
+        if ($this->items->removeElement($item)) {
+            // set the owning side to null (unless already changed)
+            if ($item->getOrderRef() === $this) {
+                $item->setOrderRef(null);
+            }
         }
 
         return $this;

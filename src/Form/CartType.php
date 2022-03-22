@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Orders;
 use Symfony\Component\Form\AbstractType;
+use App\Form\EventListener\ClearCartListener;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,6 +20,9 @@ class CartType extends AbstractType
             ])
             ->add('save', SubmitType::class)
             ->add('clear', SubmitType::class);
+        
+
+        $builder->addEventSubscriber(new ClearCartListener());
         ;
     }
 

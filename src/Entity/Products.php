@@ -56,7 +56,7 @@ class Products
     private $Status;
 
     /**
-     * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="ID_Product", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Orderdetail::class, mappedBy="product", orphanRemoval=true)
      */
     private $orderdetails;
     
