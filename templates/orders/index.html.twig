@@ -21,11 +21,11 @@
             <tr>
                 <td>{{ order.id }}</td>
                 <td>{{ order.Date ? order.Date|date('Y-m-d') : '' }}</td>
-                <td>{{ order.Delivery }}</td>
+                <td>{{ order.Delivery ? order.Date|date('Y-m-d') : '' }}</td>
                 <td>{{ order.Total }}</td>
                 <td>{{ order.Status }}</td>
                 <td>
-                    <a href=""{{ path('app_orderdetail_show', {'id': orderdetail.id}) }}"">order detail</a>
+                    <a href=""{{ path('app_orderdetail_index', {'id': order.id}) }}"">order detail</a>
                 </td>
             </tr>
         {% else %}

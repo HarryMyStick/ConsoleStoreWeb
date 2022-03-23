@@ -181,4 +181,13 @@ class Orders
 
         return $total;
     }
+    public function __toString()
+    {
+        return $this->Delivery;
+    }
+    public function Date__toString()
+    {
+        return $this->Date;
+    }
 }
+
